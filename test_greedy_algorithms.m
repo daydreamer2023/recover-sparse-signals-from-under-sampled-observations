@@ -15,6 +15,8 @@ xExact = x;
 xLeastSquare = a \ y;
 xBasic = pinv(a) * y;
 xOmp = orthogonal_matching_pursuit(sparseCardinality, a, y);
+xSp = subspace_pursuit(sparseCardinality, a, y);
+% errors
 errorExact = norm(y - a * xExact);
 errorLeastSquare = norm(y - a * xLeastSquare);
 errorBasic = norm(y - a * xBasic);
