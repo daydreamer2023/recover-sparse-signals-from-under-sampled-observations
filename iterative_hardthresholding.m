@@ -11,8 +11,9 @@ while (~ doTerminate)
     sparseSupport = hard_threshold(xIterativeHardthresholding + a' * (y - a * xIterativeHardthresholding), sparseCardinality);
     aSparseIter = a(:, sparseSupport);
     xSparseIter = aSparseIter \ y;
-    yResidue = y - aSparseIter * xSparseIter;
+%     yResidue = y - aSparseIter * xSparseIter;
     xIterativeHardthresholding(sparseSupport) = xSparseIter;
+    yResidue = y - a * xIterativeHardthresholding;
     % terminate conditions
     normalizedError = norm(yResidue) / norm(y);
     isTolerable = normalizedError <= normalizedErrorBound;
