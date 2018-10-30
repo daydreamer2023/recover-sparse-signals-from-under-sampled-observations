@@ -1,10 +1,8 @@
-function [xSubspacePursuit] = subspace_pursuit(sparseCardinality, a, y)
+function [xSubspacePursuit] = subspace_pursuit(sparseCardinality, a, y, normalizedErrorBound)
 % initialization
 % xSubspacePursuit = zeros(size(a, 2), 1);
-b = zeros(size(a, 2), 1);
 % iBasis = 0;
 % nBasis = sparseCardinality;
-normalizedErrorBound = 1e-6;
 doTerminate = 0;
 normalizedError = 1;
 
@@ -33,7 +31,7 @@ while (~ doTerminate)
     % terminate conditions
     normalizedError = norm(yResidue) / norm(y);
     isTolerable = normalizedError <= normalizedErrorBound;
-    isDivergent = normalizedError > normalizedErrorLast;
+    isDivergent = normalizedError >= normalizedErrorLast;
     doTerminate = (isDivergent || isTolerable);
     
 %     residueFunction = a' * yResidue;

@@ -1,8 +1,6 @@
-function [xIterativeHardthresholding] = iterative_hardthresholding(sparseCardinality, a, y)
+function [xIterativeHardthresholding] = iterative_hardthresholding(sparseCardinality, a, y, normalizedErrorBound)
 % initialization
 xIterativeHardthresholding = zeros(size(a, 2), 1);
-
-normalizedErrorBound = 1e-6;
 doTerminate = 0;
 normalizedError = 1;
 

@@ -1,11 +1,10 @@
-function [xOrthogonalMatchingPursuit] = orthogonal_matching_pursuit(sparseCardinality, a, y)
+function [xOrthogonalMatchingPursuit] = orthogonal_matching_pursuit(sparseCardinality, a, y, normalizedErrorBound)
 % initialization
 xOrthogonalMatchingPursuit = zeros(size(a, 2), 1);
 sparseSupport = [];
 iBasis = 0;
 nBasis = sparseCardinality;
 yResidue = y;
-normalizedErrorBound = 1e-6;
 doTerminate = 0;
 normalizedError = 1;
 while (iBasis < nBasis) && (~ doTerminate)
@@ -23,7 +22,7 @@ while (iBasis < nBasis) && (~ doTerminate)
     % terminate conditions
     normalizedError = norm(yResidue) / norm(y);
     isTolerable = normalizedError <= normalizedErrorBound;
-    isDivergent = normalizedError > normalizedErrorLast;
+    isDivergent = normalizedError >= normalizedErrorLast;
     doTerminate = (isDivergent || isTolerable);
 end
 end
