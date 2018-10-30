@@ -12,4 +12,4 @@ xBasic = pinv(A) * y;
 % corresponding errors
 errorMeanExact = mean(A * xExact - y);
 errorMeanLeastSquare = mean(A * xLeastSquare - y);
-errorMeanBasic = mean(A * xBasic -y);
+errorMeanBasic = mean(A * xBasic - y);
