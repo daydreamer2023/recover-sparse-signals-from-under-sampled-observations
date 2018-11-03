@@ -1,7 +1,8 @@
 clear; close all;
+% there can be rank deficient for SP algorithm but the result is valid
 warning('off', 'MATLAB:rankDeficientMatrix');
 %% Initial value
-% m rows -> equations, n columns -> vars
+% m rows -> equations, n columns -> unknowns
 m = 128; n = 256;
 nTests = 500;
 normalizedErrorBound = 1e-6;
@@ -15,7 +16,7 @@ for iCardinality = 1: nCardinalities
     sparseCardinality = sparseCardinalitySet(iCardinality);
     ompCounter = 0; spCounter = 0; ihtCounter = 0;
     for iTest = 1: nTests
-        [a, x, y] = linear_equation_generation(m, n, sparseCardinality);
+        [a, x, y] = underdetermined_system_generation(m, n, sparseCardinality);
         xOmp = orthogonal_matching_pursuit(sparseCardinality, a, y, normalizedErrorBound);
         xSp = subspace_pursuit(sparseCardinality, a, y, normalizedErrorBound);
         xIht = iterative_hardthresholding(sparseCardinality, a, y, normalizedErrorBound);
@@ -40,4 +41,3 @@ title('Sparse solution (x): success rate comparison');
 xlabel('Sparse cardinality');
 ylabel('Success rate of recovering the ground truth signal');
 legend('OMP solution', 'SP solution', 'IHT solution');
-flag = 1;

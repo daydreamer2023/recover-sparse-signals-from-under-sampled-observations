@@ -1,6 +1,6 @@
 clear; close all;
 %% Initial value
-% m rows -> equations, n columns -> vars
+% m rows -> equations, n columns -> unknowns
 m = 128; n = 256; sparseCardinality = 12;
 a = normc(randn(m, n));
 x = zeros(n, 1);
@@ -26,8 +26,6 @@ errorOmp = norm(y - a * xOmp) / norm(y);
 errorSp = norm(y - a * xSp) / norm(y);
 errorIht = norm(y - a * xIht) / norm(y);
 flag = 1;
-% %% Plot
-% stem(xOmp(xOmp~=0));
 %% Ground truth solution vs greedy solutions
 xExactIndex = find (xExact ~= 0);
 xOmpIndex = find(xOmp ~= 0);

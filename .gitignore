@@ -23,31 +23,15 @@ Thumbs.db
 *.lib
 *.sbr
 
-# Windows default autosave extension
+#Ignore files build by MATLAB
 *.asv
-
-# OSX / *nix default autosave extension
 *.m~
-
-# Compiled MEX binaries (all platforms)
 *.mex*
-
-# Packaged app and toolbox files
 *.mlappinstall
 *.mltbx
-
-# Generated helpsearch folders
+*.autosave
 helpsearch*/
-
-# Simulink code generation folders
 slprj/
 sccprj/
-
-# Matlab code generation folders
 codegen/
-
-# Simulink autosave extension
-*.autosave
-
-# Octave session info
 octave-workspace
