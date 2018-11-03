@@ -23,7 +23,7 @@ normalizedError = 1;
 while (~ doTerminate)
     normalizedErrorLast = normalizedError;
     xPreSparse = xIterativeHardthresholding + a' * yResidue;
-    sparseSupport = hard_threshold(xIterativeHardthresholding + a' * yResidue, sparseCardinality);
+    sparseSupport = hard_threshold(xPreSparse, sparseCardinality);
     xIterativeHardthresholding = zeros(size(a, 2), 1);
     xIterativeHardthresholding(sparseSupport) = xPreSparse(sparseSupport);
     yResidue = y - a * xIterativeHardthresholding;

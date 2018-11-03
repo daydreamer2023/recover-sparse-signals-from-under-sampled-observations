@@ -32,11 +32,11 @@ for iCardinality = 1: nCardinalities
     ihtSuccessRate(iCardinality) = ihtCounter / nTests;
 end
 figure;
-ompCurve = plot(sparseCardinalitySet, ompSuccessRate);
+ompCurve = plot(sparseCardinalitySet, ompSuccessRate, '-');
 hold on;
-spCurve = plot(sparseCardinalitySet, spSuccessRate);
+spCurve = plot(sparseCardinalitySet, spSuccessRate, '--');
 hold on;
-ihtCurve = plot(sparseCardinalitySet, ihtSuccessRate);
+ihtCurve = plot(sparseCardinalitySet, ihtSuccessRate, ':');
 title('Sparse solution (x): success rate comparison');
 xlabel('Sparse cardinality');
 ylabel('Success rate of recovering the ground truth signal');
