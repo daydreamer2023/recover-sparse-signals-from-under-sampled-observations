@@ -6,7 +6,7 @@ warning('off', 'MATLAB:rankDeficientMatrix');
 m = 128; n = 256;
 nTests = 500;
 normalizedErrorBound = 1e-6;
-sparseCardinalitySet = 3: 3: 63;
+sparseCardinalitySet = 60: 3: 63;
 nCardinalities = length(sparseCardinalitySet);
 ompSuccessRate = zeros(1, nCardinalities);
 spSuccessRate = zeros(1, nCardinalities);
@@ -32,11 +32,11 @@ for iCardinality = 1: nCardinalities
     ihtSuccessRate(iCardinality) = ihtCounter / nTests;
 end
 figure;
-ompCurve = plot(sparseCardinalitySet, ompSuccessRate, '-');
+ompCurve = plot(sparseCardinalitySet, ompSuccessRate, 'rx-');
 hold on;
-spCurve = plot(sparseCardinalitySet, spSuccessRate, '--');
+spCurve = plot(sparseCardinalitySet, spSuccessRate, 'mo--');
 hold on;
-ihtCurve = plot(sparseCardinalitySet, ihtSuccessRate, ':');
+ihtCurve = plot(sparseCardinalitySet, ihtSuccessRate, 'b*-.');
 title('Sparse solution (x): success rate comparison');
 xlabel('Sparse cardinality');
 ylabel('Success rate of recovering the ground truth signal');
